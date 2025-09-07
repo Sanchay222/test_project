@@ -49,7 +49,6 @@ class TaskManager:
         self.save_tasks()
         print(f"Task '{description}' added successfully!")
     
-    
     def complete_task(self, task_id: int) -> None:
         """Mark a task as completed"""
         task = self.find_task_by_id(task_id)
