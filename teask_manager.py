@@ -37,6 +37,19 @@ class TaskManager:
         self.next_id = 1
         self.load_tasks()
     
+    def add_task(self, description: str) -> None:
+        """Add a new task"""
+        if not description.strip():
+            print("Error: Task description cannot be empty!")
+            return
+        
+        task = Task(self.next_id, description.strip())
+        self.tasks.append(task)
+        self.next_id += 1
+        self.save_tasks()
+        print(f"Task '{description}' added successfully!")
+    
+    
     def complete_task(self, task_id: int) -> None:
         """Mark a task as completed"""
         task = self.find_task_by_id(task_id)
