@@ -1,1 +1,1 @@
-full test
+/full test
