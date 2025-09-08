@@ -1,2 +1,2 @@
-test
+full test
 ..
