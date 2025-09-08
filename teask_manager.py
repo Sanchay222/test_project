@@ -49,54 +49,7 @@ class TaskManager:
         self.save_tasks()
         print(f"Task '{description}' added successfully!")
     
-    def complete_task(self, task_id: int) -> None:
-        """Mark a task as completed"""
-        task = self.find_task_by_id(task_id)
-        if not task:
-            print(f"Error: Task with ID {task_id} not found!")
-            return
-        
-        if task.status == "completed":
-            print(f"Task '{task.description}' is already completed!")
-            return
-        
-        task.status = "completed"
-        self.save_tasks()
-        print(f"Task '{task.description}' marked as completed!")
     
-    def find_task_by_id(self, task_id: int) -> Task:
-        """Find a task by its ID"""
-        for task in self.tasks:
-            if task.id == task_id:
-                return task
-        return None
-    
-    def save_tasks(self) -> None:
-        """Save tasks to JSON file"""
-        try:
-            data = {
-                "next_id": self.next_id,
-                "tasks": [task.to_dict() for task in self.tasks]
-            }
-            with open(self.filename, 'w') as file:
-                json.dump(data, file, indent=2)
-        except Exception as e:
-            print(f"Error saving tasks: {e}")
-    
-    def load_tasks(self) -> None:
-        """Load tasks from JSON file"""
-        try:
-            if os.path.exists(self.filename):
-                with open(self.filename, 'r') as file:
-                    data = json.load(file)
-                    self.next_id = data.get("next_id", 1)
-                    self.tasks = [Task.from_dict(task_data) for task_data in data.get("tasks", [])]
-                    print(f"Loaded {len(self.tasks)} tasks from {self.filename}")
-            else:
-                print("No existing task file found. Starting fresh!")
-        except Exception as e:
-            print(f"Error loading tasks: {e}")
-            print("Starting with empty task list.")
 
 def display_menu():
     """Display the main menu"""
@@ -110,18 +63,6 @@ def display_menu():
     print("5. Exit")
     print("-"*30)
 
-def get_user_choice() -> int:
-    """Get and validate user menu choice"""
-    try:
-        choice = int(input("Enter your choice (1-5): "))
-        if 1 <= choice <= 5:
-            return choice
-        else:
-            print("Please enter a number between 1 and 5.")
-            return 0
-    except ValueError:
-        print("Please enter a valid number.")
-        return 0
 
 def main():
     """Main program loop"""
