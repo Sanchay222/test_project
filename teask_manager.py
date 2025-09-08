@@ -11,7 +11,7 @@ class Task:
         self.description = description
         self.status = status  # "pending" or "completed"
         self.created_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    
+     
     def to_dict(self) -> Dict[str, Any]:
         """Convert task to dictionary for JSON serialization"""
         return {
