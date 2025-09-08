@@ -4,15 +4,15 @@ from datetime import datetime
 from typing import List, Dict, Any
 
 class Task:
-    """Represents a single task"""
+                 """Represents a single task"""
     
-    def __init__(self, task_id: int, description: str, status: str = "pending"):
+def __init__(self, task_id: int, description: str, status: str = "pending"):
         self.id = task_id
         self.description = description
         self.status = status  # "pending" or "completed"
         self.created_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
      
-    def to_dict(self) -> Dict[str, Any]:
+                 def to_dict(self) -> Dict[str, Any]:
         """Convert task to dictionary for JSON serialization"""
         return {
             "id": self.id,
@@ -21,8 +21,8 @@ class Task:
             "created_date": self.created_date
         }
     
-    @classmethod
-    def from_dict(cls, data: Dict[str, Any]) -> 'Task':
+                    @classmethod
+def from_dict(cls, data: Dict[str, Any]) -> 'Task':
         """Create task from dictionary"""
         task = cls(data["id"], data["description"], data["status"])
         task.created_date = data["created_date"]
