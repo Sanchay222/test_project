@@ -1,12 +1,12 @@
 
 
-import json
+                                         import json
 
 import os
 
-from datetime import datetime
+from datetime import                                datetime
 
-from typing import List, Dict, Any
+from typing import List, Dict,                   Any
  
 class Task:
 
@@ -20,7 +20,7 @@ def __init__(self, task_id: int, description: str, status: str = "pending"):
 
         self.status = status  # "pending" or "completed"
 
-        self.created_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                   self.created_date = datetime.                         now().strftime("%Y-%m-%d %H:%M:%S")
               def to_dict(self) -> Dict[str, Any]:
 
         """Convert task to dictionary for JSON serialization""
@@ -38,17 +38,16 @@ return {
 
                                  @classmethod
 
-    def from_dict(cls, data: Dict[str, Any]) -> 'Task':
+                   def from_dict(cls, data: Dict[str, Any]) -> 'Task':
 
         """Create task from dictionary"""
-
-        task = cls(data["id"], data["description"], data["status"])
+task = cls(data["id"], data["description"], data["status"])
 
         task.created_date = data["created_date"]
 
         return task
  
-class TaskManager:
+class                       TaskManager:
 
     """Main task manager class"""
 
@@ -152,11 +151,11 @@ class TaskManager:
 
             print("Starting with empty task list.")
  
-def display_menu():
+                             def display_menu():
 
     """Display the main menu"""
 
-    print("\n" + "="*30)
+               print("\n" + "="*30)
 
     print("PERSONAL TASK MANAGER")
 
@@ -198,7 +197,7 @@ def get_user_choice() -> int:
 
         return 0
  
-def main():
+                                              def main():
 
     """Main program loop"""
 
