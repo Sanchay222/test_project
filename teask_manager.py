@@ -64,53 +64,7 @@ class TaskManager:
 
         self.load_tasks()
 
-    def add_task(self, description: str) -> None:
-
-        """Add a new task"""
-
-        if not description.strip():
-
-            print("Error: Task description cannot be empty!")
-
-            return
-
-        task = Task(self.next_id, description.strip())
-
-        self.tasks.append(task)
-
-        self.next_id += 1
-
-        self.save_tasks()
-
-        print(f"Task '{description}' added successfully!")
-
-    def view_tasks(self) -> None:
-
-        """Display all tasks"""
-
-        if not self.tasks:
-
-            print("No tasks found!")
-
-            return
-
-        print("\n" + "="*50)
-
-        print("YOUR TASKS")
-
-        print("="*50)
-
-        for task in self.tasks:
-
-            status_symbol = "✓" if task.status == "completed" else "○"
-
-            print(f"{status_symbol} [{task.id}] {task.description}")
-
-            print(f"    Created: {task.created_date}")
-
-            print(f"    Status: {task.status.upper()}")
-
-            print("-" * 30)
+    
 
     def complete_task(self, task_id: int) -> None:
 
@@ -136,23 +90,7 @@ class TaskManager:
 
         print(f"Task '{task.description}' marked as completed!")
 
-    def delete_task(self, task_id: int) -> None:
-
-        """Delete a task by ID"""
-
-        task = self.find_task_by_id(task_id)
-
-        if not task:
-
-            print(f"Error: Task with ID {task_id} not found!")
-
-            return
-
-        self.tasks.remove(task)
-
-        self.save_tasks()
-
-        print(f"Task '{task.description}' deleted successfully!")
+    
 
     def find_task_by_id(self, task_id: int) -> Task:
 
