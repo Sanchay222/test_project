@@ -21,7 +21,7 @@ def __init__(self, task_id: int, description: str, status: str = "pending"):
             "status": self.status,
             "created_date": self.created_date
         }
-    
+  
                     @classmethod
 def from_dict(cls, data: Dict[str, Any]) -> 'Task':
         """Create task from dictionary"""
