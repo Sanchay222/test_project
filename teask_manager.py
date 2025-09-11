@@ -66,38 +66,7 @@ class TaskManager:
             print(f"    Status: {task.status.upper()}")
             print("-" * 30)
     
-    def complete_task(self, task_id: int) -> None:
-        """Mark a task as completed"""
-        task = self.find_task_by_id(task_id)
-        if not task:
-            print(f"Error: Task with ID {task_id} not found!")
-            return
-        
-        if task.status == "completed":
-            print(f"Task '{task.description}' is already completed!")
-            return
-        
-        task.status = "completed"
-        self.save_tasks()
-        print(f"Task '{task.description}' marked as completed!")
     
-    def delete_task(self, task_id: int) -> None:
-        """Delete a task by ID"""
-        task = self.find_task_by_id(task_id)
-        if not task:
-            print(f"Error: Task with ID {task_id} not found!")
-            return
-        
-        self.tasks.remove(task)
-        self.save_tasks()
-        print(f"Task '{task.description}' deleted successfully!")
-    
-    def find_task_by_id(self, task_id: int) -> Task:
-        """Find a task by its ID"""
-        for task in self.tasks:
-            if task.id == task_id:
-                return task
-        return None
     
     def save_tasks(self) -> None:
         """Save tasks to JSON file"""
